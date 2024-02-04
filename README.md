@@ -21,3 +21,15 @@ To run to consumer example:
  mvn compile
  mvn exec:java -Dexec.mainClass=org.example.Consumer
 ```
+
+## Configure kafka client ssl
+
+To configure kafka client to communicate thought ssl with kafka cluster (strimzi)
+1. Get the cluster ca cert:
+```shell
+kubectl -n strimzi get secret my-cluster-cluster-ca-cert -o jsonpath='{.data.ca\.crt}' | base64 -d > ca.crt
+```
+2. Import the certificate to a truststore and configure the client to use it: 
+```shell
+keytool -import -file ca.crt -keystore client.truststore.p12 -alias ca -storepass 123456 -noprompt
+```

@@ -11,6 +11,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.config.SslConfigs;
 import org.apache.kafka.common.errors.RetriableException;
 import org.apache.kafka.common.serialization.ByteArraySerializer;
 import org.apache.kafka.common.serialization.LongSerializer;
@@ -19,12 +20,15 @@ public class Producer implements Callback {
     // Constants for configuration
     private static final Random RND = new Random(0);
     // Using NodePort Service to expose kafka in minikube
-    private static final String BOOTSTRAP_SERVERS = "192.168.49.2:32220";
+    private static final String BOOTSTRAP_SERVERS = "192.168.49.2:32326";
     private static final String TOPIC_NAME = "my-topic";
     private static final long NUM_MESSAGES = 50;
     private static final int MESSAGE_SIZE_BYTES = 100;
     private static final long PROCESSING_DELAY_MS = 1000L;
-
+    private static final String SSL_SECURITY_PROTOCOL = "SSL";
+    private static final String SSL_TRUSTSTORE_TYPE = "PKCS12";
+    private static final String SSL_TRUSTSTORE_LOCATION = "/tmp/kafka/client.truststore.p12";
+    private static final String SSL_TRUSTSTORE_PASSWORD = "123456";
     protected AtomicLong messageCount = new AtomicLong(0);
 
     public static void main(String[] args) {
@@ -61,6 +65,10 @@ public class Producer implements Callback {
         // Configure serializers for keys and values
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class);
+        props.put(SslConfigs.SSL_PROTOCOL_CONFIG, SSL_SECURITY_PROTOCOL);
+        props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, SSL_TRUSTSTORE_LOCATION);
+        props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, SSL_TRUSTSTORE_PASSWORD);
+
 
         return new KafkaProducer<>(props);
     }
