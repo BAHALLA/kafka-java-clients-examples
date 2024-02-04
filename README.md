@@ -24,7 +24,7 @@ To run to consumer example:
 
 ## Configure kafka client ssl
 
-To configure kafka client to communicate thought ssl with kafka cluster (strimzi)
+To configure kafka client to communicate throught ssl with kafka cluster (strimzi)
 1. Get the cluster ca cert:
 ```shell
 kubectl -n strimzi get secret my-cluster-cluster-ca-cert -o jsonpath='{.data.ca\.crt}' | base64 -d > ca.crt
@@ -33,3 +33,4 @@ kubectl -n strimzi get secret my-cluster-cluster-ca-cert -o jsonpath='{.data.ca\
 ```shell
 keytool -import -file ca.crt -keystore client.truststore.p12 -alias ca -storepass 123456 -noprompt
 ```
+3. configure client ssl configs with the created truststore
