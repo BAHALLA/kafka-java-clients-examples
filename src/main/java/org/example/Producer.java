@@ -22,7 +22,7 @@ public class Producer implements Callback {
     // Using NodePort Service to expose kafka in minikube
     private static final String BOOTSTRAP_SERVERS = "192.168.49.2:30628";
     private static final String TOPIC_NAME = "my-topic";
-    private static final long NUM_MESSAGES = 50;
+    private static final long NUM_MESSAGES = 10;
     private static final int MESSAGE_SIZE_BYTES = 100;
     private static final long PROCESSING_DELAY_MS = 1000L;
     private static final String SSL_SECURITY_PROTOCOL = "SSL";
