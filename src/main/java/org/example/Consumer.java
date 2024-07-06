@@ -28,7 +28,7 @@ import static java.util.Collections.singleton;
 
 public class Consumer implements ConsumerRebalanceListener, OffsetCommitCallback {
     // Constants for configuration
-    private static final String BOOTSTRAP_SERVERS = "192.168.49.2:32220";
+    private static final String BOOTSTRAP_SERVERS = "192.168.49.2:32648";
     private static final String GROUP_ID = "my-group";
     private static final long POLL_TIMEOUT_MS = 1_000L;
     private static final String TOPIC_NAME = "my-topic";

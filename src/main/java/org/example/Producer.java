@@ -20,7 +20,7 @@ public class Producer implements Callback {
     // Constants for configuration
     private static final Random RND = new Random(0);
     // Using NodePort Service to expose kafka in minikube
-    private static final String BOOTSTRAP_SERVERS = "192.168.49.2:30628";
+    private static final String BOOTSTRAP_SERVERS = "192.168.49.2:32648";
     private static final String TOPIC_NAME = "my-topic";
     private static final long NUM_MESSAGES = 10;
     private static final int MESSAGE_SIZE_BYTES = 100;
