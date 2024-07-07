@@ -41,6 +41,11 @@ kubectl -n strimzi get secret my-cluster-cluster-ca-cert -o jsonpath='{.data.ca\
 keytool -import -file ca.crt -keystore client.truststore.p12 -alias ca -storepass 123456 -noprompt
 ```
 3. configure client ssl configs with the created truststore
+```
+   SSL_SECURITY_PROTOCOL = "SSL";
+   SSL_TRUSTSTORE_LOCATION = "/tmp/client.truststore.p12";
+   SSL_TRUSTSTORE_PASSWORD = "123456";
+```
 4. To test with kafka cli: 
 ```shell
 ./kafka-console-producer.sh --broker-list 192.168.49.2:30628 --producer-property security.protocol=SSL --producer-property ssl.truststore.password=123456 --producer-property ssl.truststore.location=/tmp/client.truststore.p12 --topic my-topic
