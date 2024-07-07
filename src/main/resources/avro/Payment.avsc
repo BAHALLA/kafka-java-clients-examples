@@ -1,5 +1,5 @@
 {
-  "namespace": "org.example",
+  "namespace": "org.example.generated",
   "type": "record",
   "name": "Payment",
   "fields": [

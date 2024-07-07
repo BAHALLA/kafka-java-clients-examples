@@ -5,7 +5,8 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.errors.RetriableException;
-import utils.KafkaConfig;
+import org.example.generated.Payment;
+import org.example.utils.KafkaConfig;
 
 public class AvroProducer implements Callback {
 
