@@ -8,17 +8,24 @@ Check [this blog post](https://strimzi.io/blog/2023/10/03/kafka-producer-client-
 
 To run to producer example:
 ```shell
- mvn compile
+ mvn clean compile
  mvn exec:java -Dexec.mainClass=org.example.Producer
 ```
 
+To run Avro producer example with `ProducterInterceptor` : 
+* configure the Producer to use an interceptor by setting the value of `interceptor.classes`
+* Compile and run the example : 
+```shell
+    mvn clean compile
+    mvn exec:java -Dexec.mainClass=org.example.AvroProducer
+```
 
 ## Consumer example
 Check [this blog post](https://strimzi.io/blog/2023/11/09/kafka-consumer-client-essentials/), in strimzi website for more details.
 
 To run to consumer example:
 ```shell
- mvn compile
+ mvn clean compile
  mvn exec:java -Dexec.mainClass=org.example.Consumer
 ```
 
