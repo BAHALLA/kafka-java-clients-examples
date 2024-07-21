@@ -34,11 +34,11 @@ To run to consumer example:
 To configure kafka client to communicate throught ssl with kafka cluster (strimzi)
 1. Get the cluster ca cert:
 ```shell
-kubectl -n strimzi get secret my-cluster-cluster-ca-cert -o jsonpath='{.data.ca\.crt}' | base64 -d > ca.crt
+kubectl -n strimzi get secret my-cluster-cluster-ca-cert -o jsonpath='{.data.ca\.crt}' | base64 -d > /tmp/ca.crt
 ```
 2. Import the certificate to a truststore and configure the client to use it: 
 ```shell
-keytool -import -file ca.crt -keystore client.truststore.p12 -alias ca -storepass 123456 -noprompt
+keytool -import -file ca.crt -keystore /tmp/client.truststore.p12 -alias ca -storepass 123456 -noprompt
 ```
 3. configure client ssl configs with the created truststore
 ```

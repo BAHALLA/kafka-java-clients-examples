@@ -84,11 +84,12 @@
         <version>5.3.2</version>
         <configuration>
           <schemaRegistryUrls>
-            <param>http://192.168.49.2:31574</param>
+            <param>http://192.168.49.2:30007</param>
           </schemaRegistryUrls>
           <subjects>
             <transactions-value>src/main/resources/avro/Payment.avsc</transactions-value>
           </subjects>
+          <outputDirectory/>
         </configuration>
         <goals>
           <goal>test-compatibility</goal>
